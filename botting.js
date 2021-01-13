@@ -8,32 +8,40 @@ const config = {
   version: false //version of the server (false = auto detect)
 }
 
-mineflayer.multiple = (bots, constructor) => {
-  const { Worker, isMainThread, workerData } = require('worker_threads')
-  if (isMainThread) {
-    const threads = []
-    for (const i in bots) {
-      threads.push(new Worker(__filename, { workerData: bots[i] }))
-    }
-  } else {
-    constructor(workerData)
-  }
-}
+//mineflayer.multiple = (bot, constructor) => {
+//  const { Worker, isMainThread, workerData } = require('worker_threads')
+//  if (isMainThread) {
+//    const threads = []
+//    for (const i in bot) {
+ //     threads.push(new Worker(__filename, { workerData: bots[i] }))
+ //   }
+ // } else {
+  //  constructor(workerData)
+ // }
+// }
 
-const bots = []
-for (let i = 0; i < 1; i++) { // edit the 10 number to define the amount of bots
-  bots.push({ username: `StresserBot${i}` })
-}
-
-mineflayer.multiple(bots, ({ username }) => {
-  const bot = mineflayer.createBot({
-    host: config.host,
-    port:config.port,
-    username: username,
-    // passwd: config.password
-    version: config.version
-        })
+const bot = mineflayer.createBot({ //creates a new bot from the config above
+  host: config.host, //imported from config
+  port: config.port, //imported from config
+  username: config.username, //imported from config
+  // password: config.password, //imported from config
+  version: config.version //imported from config
 });
+
+// const bot = []
+// for (let i = 0; i < 1; i++) { // edit the 10 number to define the amount of bots
+//  bots.push({ username: `StresserBot${i}` })
+ //}
+
+//mineflayer.multiple(bot, ({ username }) => {
+//  const bot = mineflayer.createBot({
+ //   host: config.host,
+  //  port:config.port,
+   // username: username,
+    // passwd: config.password
+  //  version: config.version
+   //     })
+// });
 console.log("Connecting...") //logs "Connecting..." into the console
 
 StartBot() 
