@@ -61,5 +61,3 @@ mineflayer.multiple(bots, ({ username }) => {
     })
   })
 })
-bot.on('kicked', (reason, loggedIn) => console.log(reason, loggedIn))
-bot.on('error', err => console.log(err))
