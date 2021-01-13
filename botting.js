@@ -15,7 +15,7 @@ mineflayer.multiple = (bots, constructor) => {
 }
 
 const bots = []
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) { // edit the 10 number to define the amount of bots
   bots.push({ username: `NotThisNaameAgain${i}` })
 }
 
